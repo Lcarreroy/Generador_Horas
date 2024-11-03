@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Horas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   
+</head>
+<body>
+
+    <div class="container">
+        <h1>Gestor de Horas</h1>
+        
+        <form action="/calculate" method="POST">
+            <label for="monday">Lunes:</label>
+            <input type="number" id="monday" name="monday" step="0.1" min="0" required>
+
+            <label for="tuesday">Martes:</label>
+            <input type="number" id="tuesday" name="tuesday" step="0.1" min="0" required>
+
+            <label for="wednesday">Miércoles:</label>
+            <input type="number" id="wednesday" name="wednesday" step="0.1" min="0" required>
+
+            <label for="thursday">Jueves:</label>
+            <input type="number" id="thursday" name="thursday" step="0.1" min="0" required>
+
+            <label for="friday">Viernes:</label>
+            <input type="number" id="friday" name="friday" step="0.1" min="0" required>
+
+            <label for="saturday">Sábado:</label>
+            <input type="number" id="saturday" name="saturday" step="0.1" min="0" required>
+
+            <label for="sunday">Domingo:</label>
+            <input type="number" id="sunday" name="sunday" step="0.1" min="0" required>
+
+            <button type="submit" class="submit-btn">Calcular Total</button>
+        </form>
+
+        <!-- Mostrar resultados -->
+        {% if total_hours is not none %}
+            <div class="result">
+                <h2>Total de horas trabajadas: {{ total_hours }} horas</h2>
+            </div>
+        {% endif %}
+
+        <!-- Mostrar errores -->
+        {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
